@@ -1,27 +1,27 @@
 {
-    "tasks": [
-        {
-            "name": "format csharpier",
-            "command": "dotnet",
-            "args": ["csharpier", "${staged}"],
-            "include": ["**/*.cs"]
-        },
-        {
-            "name": "build",
-            "command": "dotnet",
-            "args": ["build"]
-        },
-        {
-            "name": "lint-frontend",
-            "command": "npm",
-            "args": ["--prefix", "src/OnboardingClient", "run", "lint"],
-            "include": [
-                "src/OnboardingClient/**/*.vue",
-                "src/OnboardingClient/**/*.ts",
-                "src/OnboardingClient/**/*.js",
-                "src/OnboardingClient/**/*.json",
-                "src/OnboardingClient/**/*.css"
-            ]
-        }
-    ]
+  "tasks": [
+    {
+      "name": "format csharpier",
+      "command": "dotnet",
+      "args": ["csharpier", "format", "src/OnboardingClient.Api"],
+      "include": ["**/*.cs"]
+    },
+    {
+      "name": "build",
+      "command": "dotnet",
+      "args": ["build"]
+    },
+    {
+      "name": "lint-frontend",
+      "command": "npm",
+      "args": ["--prefix", "src/OnboardingClient", "run", "lint"],
+      "include": [
+        "src/OnboardingClient/**/*.vue",
+        "src/OnboardingClient/**/*.ts",
+        "src/OnboardingClient/**/*.js",
+        "src/OnboardingClient/**/*.json",
+        "src/OnboardingClient/**/*.css"
+      ]
+    }
+  ]
 }
