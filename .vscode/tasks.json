@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "setup",
+            "dependsOn": ["setup:frontend", "setup:backend"],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "setup:frontend",
+            "type": "shell",
+            "command": "npm ci",
+            "options": {
+                "cwd": "${workspaceFolder}/src/OnboardingClient"
+            }
+        },
+        {
+            "label": "setup:backend",
+            "type": "shell",
+            "command": "dotnet restore",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "setup",
+            "dependsOn": ["setup:frontend", "setup:backend"],
+            "dependsOrder": "sequence"
+        }
+    ]
+}

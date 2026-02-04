@@ -1,13 +1,20 @@
 using System.Diagnostics;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 Process Run(string name, string command, string cwd)
 {
+    var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
+    var shell = isWindows ? "cmd" : "/bin/bash";
+    var args = isWindows ? $"/c {command}" : $"-c \"{command}\"";
+
     var p = new Process
     {
         StartInfo = new ProcessStartInfo
         {
-            FileName = "cmd",
-            Arguments = $"/c {command}",
+            FileName = shell,
+            Arguments = args,
             WorkingDirectory = cwd,
             UseShellExecute = false,
             RedirectStandardOutput = true,

@@ -1,6 +1,9 @@
 {
-  "recommendations": [
-    "Vue.volar",
-    "esbenp.prettier-vscode"
-  ]
+    "recommendations": [
+        "Vue.volar",
+        "esbenp.prettier-vscode",
+        "ms-dotnettools.csharp",
+        "csharpier.csharpier-vscode",
+        "ms-mssql.mssql"
+    ]
 }
