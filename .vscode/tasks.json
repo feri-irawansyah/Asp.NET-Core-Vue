@@ -11,7 +11,11 @@
             "type": "shell",
             "command": "npm ci",
             "options": {
-                "cwd": "${workspaceFolder}/src/OnboardingClient"
+                "cwd": "${workspaceFolder}/src/OnboardingClient",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/c"]
+                }
             }
         },
         {
@@ -19,7 +23,11 @@
             "type": "shell",
             "command": "dotnet restore",
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/c"]
+                }
             }
         },
         {
