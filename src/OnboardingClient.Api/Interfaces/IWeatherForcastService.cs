@@ -1,7 +1,6 @@
-namespace OnboardingClient.Api.Interfaces
+namespace OnboardingClient.Api.Interfaces;
+
+public interface IWeatherForcastService
 {
-    public interface IWeatherForcastService
-    {
-        Task<List<WeatherForcastView>> GetWeatherForcast();
-    }
+    Task<List<WeatherForcastView>> GetWeatherForcast();
 }

@@ -1,3 +1,5 @@
+using OnboardingClient.Api.Interfaces;
+
 namespace OnboardingClient.Api.Services;
 
 public class WeatherForcastService : IWeatherForcastService
