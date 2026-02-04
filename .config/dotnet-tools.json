@@ -11,6 +11,10 @@
             "version": "2.0.0",
             "commands": ["dotnet-script", "start", "compile"],
             "rollForward": false
+        },
+        "husky": {
+            "version": "0.6.4",
+            "commands": ["husky"]
         }
     }
 }

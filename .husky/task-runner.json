@@ -1,0 +1,14 @@
+{
+    "tasks": [
+        {
+            "name": "format csharpier",
+            "command": "dotnet",
+            "args": ["csharpier", "${staged}"]
+        },
+        {
+            "name": "build",
+            "command": "dotnet",
+            "args": ["build"]
+        }
+    ]
+}
