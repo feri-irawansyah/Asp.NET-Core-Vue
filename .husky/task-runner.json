@@ -10,6 +10,18 @@
             "name": "build",
             "command": "dotnet",
             "args": ["build"]
+        },
+        {
+            "name": "lint-frontend",
+            "command": "npm",
+            "args": ["--prefix", "src/OnboardingClient", "run", "lint"],
+            "include": [
+                "src/OnboardingClient/**/*.vue",
+                "src/OnboardingClient/**/*.ts",
+                "src/OnboardingClient/**/*.js",
+                "src/OnboardingClient/**/*.json",
+                "src/OnboardingClient/**/*.css"
+            ]
         }
     ]
 }

@@ -31,8 +31,20 @@
             }
         },
         {
+            "label": "setup:husky",
+            "type": "shell",
+            "command": "dotnet husky install",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": ["/c"]
+                }
+            }
+        },
+        {
             "label": "setup",
-            "dependsOn": ["setup:frontend", "setup:backend"],
+            "dependsOn": ["setup:frontend", "setup:backend", "setup:husky"],
             "dependsOrder": "sequence"
         }
     ]
