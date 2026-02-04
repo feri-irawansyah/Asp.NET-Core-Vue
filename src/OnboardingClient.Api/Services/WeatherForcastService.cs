@@ -1,11 +1,9 @@
-using OnboardingClient.Api.Interfaces;
-
 namespace OnboardingClient.Api.Services;
 
 public class WeatherForcastService : IWeatherForcastService
 {
     private static readonly string[] Summaries =
-    {
+    [
         "Freezing",
         "Bracing",
         "Chilly",
@@ -16,7 +14,7 @@ public class WeatherForcastService : IWeatherForcastService
         "Hot",
         "Sweltering",
         "Scorching",
-    };
+    ];
 
     public Task<List<WeatherForcastView>> GetWeatherForcast()
     {

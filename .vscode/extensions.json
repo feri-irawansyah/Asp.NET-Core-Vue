@@ -1,9 +1,13 @@
 {
-    "recommendations": [
-        "Vue.volar",
-        "esbenp.prettier-vscode",
-        "ms-dotnettools.csharp",
-        "csharpier.csharpier-vscode",
-        "ms-mssql.mssql"
-    ]
+  "recommendations": [
+    "Vue.volar",
+    "esbenp.prettier-vscode",
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.csdevkit",
+    "csharpier.csharpier-vscode",
+    "ms-mssql.mssql",
+    "vscode.csharp",
+    "taoklerks.poor-mans-t-sql-formatter-vscode",
+    "formulahendry.dotnet-test-explorer"
+  ]
 }
