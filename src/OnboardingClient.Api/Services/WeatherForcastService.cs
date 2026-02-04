@@ -30,6 +30,13 @@ public class WeatherForcastService : IWeatherForcastService
             })
             .ToList();
 
+        var query =
+            @"SELECT *  FROM  WeatherForcast 
+            WHERE Date = '2026-02-04' A
+            ND Summary is not null 
+            and TemperatureC is not null 
+            and Summary != '' and TemperatureC != ''";
+
         return Task.FromResult(data);
     }
 }
