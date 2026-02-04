@@ -3,7 +3,8 @@
         {
             "name": "format csharpier",
             "command": "dotnet",
-            "args": ["csharpier", "${staged}"]
+            "args": ["csharpier", "${staged}"],
+            "include": ["**/*.cs"]
         },
         {
             "name": "build",
