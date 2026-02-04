@@ -13,8 +13,13 @@ watchEffect(async () => {
 <template>
     <div class="about">
         <h1>This is an about page</h1>
+        <h1>
+            This is an about page
+        </h1>
         <ul>
-            <li v-for="item in data">{{ item.summary }}</li>
+            <li v-for="item in data">
+                {{ item.summary }}
+            </li>
         </ul>
     </div>
 </template>
