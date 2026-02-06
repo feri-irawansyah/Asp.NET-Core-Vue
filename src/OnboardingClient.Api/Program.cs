@@ -1,7 +1,16 @@
-using OnboardingClient.Api.Interfaces;
-using OnboardingClient.Api.Services;
+using OnboardingClient.Api.Common;
+using OnboardingClient.Api.Features.Weather;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var brokerId = builder.Configuration["BrokerId"] ?? "Default";
+
+var brokerServices = builder.Configuration.GetSection("BrokerService").Get<string[]>() ?? [];
+
+Console.WriteLine($"BrokerId = {brokerId}");
+Console.WriteLine($"BrokerServices = {string.Join(", ", brokerServices)}");
+
+builder.Services.AddSingleton(new BrokerIdContext(brokerId, brokerServices));
 
 // 🔥 Controllers (WAJIB)
 builder.Services.AddControllers();
@@ -11,20 +20,27 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // 🔥 Dependency Injection
-builder.Services.AddScoped<IWeatherForcastService, WeatherForcastService>();
+var services = builder.Services;
+
+List<IExposedFeature> features = [new WeatherFeature()];
+
+foreach (var feature in features)
+{
+    feature.ConfigureServices(services, builder.Configuration);
+}
 
 var app = builder.Build();
 
-// Middleware
-if (app.Environment.IsDevelopment())
+foreach (var feature in features)
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    feature.ConfigureEndpoints(app);
 }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-// 🔥 Map Controllers
-app.MapControllers();
-
 app.Run();
+
+public partial class Program { }
