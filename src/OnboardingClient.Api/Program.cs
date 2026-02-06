@@ -36,6 +36,21 @@ foreach (var feature in features)
     feature.ConfigureEndpoints(app);
 }
 
+app.MapGet(
+    "/",
+    () =>
+    {
+        return Results.Ok(
+            new
+            {
+                AppName = "Custommer Onboarding App",
+                BrokerId = brokerId,
+                BrokerServices = brokerServices,
+            }
+        );
+    }
+);
+
 app.UseSwagger();
 app.UseSwaggerUI();
 

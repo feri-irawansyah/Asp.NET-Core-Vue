@@ -1,8 +1,10 @@
 <script setup>
+import { useAppStore } from '@/stores/app';
 import { ref, watchEffect } from 'vue';
 
 let data = ref([]);
-const mode = __MODE__;
+const appStore = useAppStore() // ambil store yang sama
+const brokerId = appStore.appInfo.brokerId // langsung pakai, gak fetch lagi
 
 watchEffect(async () => {
     const response = await fetch('/api/weather/list');
@@ -13,7 +15,7 @@ watchEffect(async () => {
 
 <template>
     <div class="about">
-        <h1>This is an about page {{ mode }}</h1>
+        <h1>This is an about page {{ brokerId }}</h1>
         <ul>
             <li v-for="d in data" :key="d.date">
                 <h2>{{ d.summary }}</h2>

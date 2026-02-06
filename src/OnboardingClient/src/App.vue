@@ -1,23 +1,36 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { useAppStore } from './stores/app'
+import { onMounted, ref } from 'vue'
+
+const appStore = useAppStore()
+const loading = ref(true)
+
+onMounted(async () => {
+    await appStore.fetchAppInfo() // fetch pertama kali, simpan di store
+    loading.value = false
+})
 </script>
 
 <template>
-    <header>
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <h1 v-if="loading">Loading...</h1>
+    <div v-else>
+        <header>
+            <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-        <div class="wrapper">
-            <HelloWorld msg="You did it!" />
+            <div class="wrapper">
+                <HelloWorld msg="You did it!" />
 
-            <nav>
-                <RouterLink to="/">Home</RouterLink>
-                <RouterLink to="/about">About</RouterLink>
-            </nav>
-        </div>
-    </header>
+                <nav>
+                    <RouterLink to="/">Home</RouterLink>
+                    <RouterLink to="/about">About</RouterLink>
+                </nav>
+            </div>
+        </header>
 
-    <RouterView />
+        <RouterView />
+    </div>
 </template>
 
 <style scoped>
