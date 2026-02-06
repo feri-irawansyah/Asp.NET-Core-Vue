@@ -2,9 +2,10 @@
 import { ref, watchEffect } from 'vue';
 
 let data = ref([]);
+const mode = __MODE__;
 
 watchEffect(async () => {
-    const response = await fetch('/api/WeatherForcast/list');
+    const response = await fetch('/api/weather/list');
     const result = await response.json();
     data.value = result.data;
 });
@@ -12,7 +13,7 @@ watchEffect(async () => {
 
 <template>
     <div class="about">
-        <h1>This is an about page</h1>
+        <h1>This is an about page {{ mode }}</h1>
         <ul>
             <li v-for="d in data" :key="d.date">
                 <h2>{{ d.summary }}</h2>

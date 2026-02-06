@@ -1,6 +1,9 @@
 using System.Diagnostics;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
+
+var args = Environment.GetCommandLineArgs();
+
+var brokerId = args.Length > 2 ? args[2] : "";
 
 Process Run(string name, string command, string cwd)
 {
@@ -42,10 +45,12 @@ Process Run(string name, string command, string cwd)
 }
 
 // FRONTEND
-var frontend = Run("VUE", "npm run dev", "src/OnboardingClient");
+var frontendCmd = brokerId == "" ? "npm run dev" : $"VITE_MODE={brokerId} npm run dev";
+var frontend = Run("VUE", frontendCmd, "src/OnboardingClient");
 
 // BACKEND
-var backend = Run("DOTNET", "dotnet watch run", "src/OnboardingClient.Api");
+var backendCmd = brokerId == "" ? "dotnet watch run" : $"dotnet watch run --environment {brokerId}";
+var backend = Run("DOTNET", backendCmd, "src/OnboardingClient.Api");
 
 Console.WriteLine("🚀 Frontend + Backend running (CTRL+C to stop)");
 

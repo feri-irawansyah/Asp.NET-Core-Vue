@@ -1,5 +1,9 @@
 using System.Diagnostics;
 
+var args = Environment.GetCommandLineArgs();
+
+var brokerId = args.Length > 2 ? args[2] : "";
+
 int Run(string name, string command, string cwd)
 {
     var p = new Process
@@ -54,7 +58,9 @@ Console.WriteLine("📦 Build directory prepared");
 // =====================
 Console.WriteLine("🏗️ Building frontend...");
 
-if (Run("VUE", "npm run build", "src/OnboardingClient") != 0)
+var frontendCmd = brokerId != "" ? $"VITE_MODE={brokerId} npm run build" : "npm run build";
+Console.WriteLine($"VITE_MODE={frontendCmd}");
+if (Run("VUE", frontendCmd, "src/OnboardingClient") != 0)
     throw new Exception("❌ Frontend build failed");
 
 // copy dist → build/frontend
