@@ -1,19 +1,12 @@
-using OnboardingClient.Api.Common;
-using OnboardingClient.Api.Features.Weather;
-
 var builder = WebApplication.CreateBuilder(args);
 
 var brokerId = builder.Configuration["BrokerId"] ?? "Default";
 
-var brokerServices = builder.Configuration.GetSection("BrokerService").Get<string[]>() ?? [];
+var brokerServices = builder.Configuration.GetSection("BrokerService").Get<BrokerService[]>() ?? [];
 
 Console.WriteLine($"BrokerId = {brokerId}");
-Console.WriteLine($"BrokerServices = {string.Join(", ", brokerServices)}");
 
 builder.Services.AddSingleton(new BrokerIdContext(brokerId, brokerServices));
-
-// 🔥 Controllers (WAJIB)
-builder.Services.AddControllers();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -51,6 +44,8 @@ app.MapGet(
     }
 );
 
+// Middleware
+if (app.Environment.IsDevelopment()) { }
 app.UseSwagger();
 app.UseSwaggerUI();
 

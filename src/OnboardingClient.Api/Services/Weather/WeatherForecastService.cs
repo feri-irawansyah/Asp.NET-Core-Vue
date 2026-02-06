@@ -1,8 +1,6 @@
-using OnboardingClient.Api.Interfaces;
+namespace OnboardingClient.Api.Services.Weather;
 
-namespace OnboardingClient.Api.Services;
-
-public class CPWeatherService : IWeatherForcastService
+public class WeatherForecastService : IWeatherForecastService
 {
     private static readonly string[] Summaries =
     [
@@ -18,15 +16,15 @@ public class CPWeatherService : IWeatherForcastService
         "Scorching",
     ];
 
-    public Task<List<WeatherForcastView>> GetWeatherForcast()
+    public Task<List<WeatherForecastView>> GetWeatherForcast()
     {
         var data = Enumerable
             .Range(1, 5)
-            .Select(index => new WeatherForcastView
+            .Select(index => new WeatherForecastView
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)] + "-CP",
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)],
             })
             .ToList();
 

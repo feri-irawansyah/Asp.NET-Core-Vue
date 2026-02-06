@@ -15,7 +15,7 @@ watchEffect(async () => {
 
 <template>
     <div class="about">
-        <h1>This is an about page {{ brokerId }}</h1>
+        <h1>About View {{ brokerId }}</h1>
         <ul>
             <li v-for="d in data" :key="d.date">
                 <h2>{{ d.summary }}</h2>

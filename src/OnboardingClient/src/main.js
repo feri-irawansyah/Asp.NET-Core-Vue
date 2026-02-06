@@ -1,14 +1,28 @@
-import './assets/main.css'
+import './assets/css/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import { useAppStore } from './stores/app'
 
-const app = createApp(App)
+async function bootstrap() {
+    const app = createApp(App)
+    const pinia = createPinia()
+    app.use(pinia)
 
-app.use(createPinia())
-app.use(router)
+    // Fetch app info dulu sebelum mount
+    const appStore = useAppStore(pinia)
+    await appStore.fetchAppInfo()
 
-app.mount('#app')
+    if (appStore.appInfo.brokerId === 'CP') {
+        await import('./assets/css/cp/main.css')
+    }
+
+    app.use(router)
+
+    app.mount('#app')
+}
+
+bootstrap()
