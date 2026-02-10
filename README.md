@@ -82,3 +82,13 @@ src
 - [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
 - [Husky](https://github.com/typicode/husky)
 - [Vue JS Adalah Frontend Library Yang Mudah Dan Menyenangkan](https://feri-irawansyah.my.id/catatan/frontend/vue-js-adalah-frontend-library-yang-mudah-dan-menyenangkan)
+
+## Debugging
+
+| Action      | Shortcut    |
+| ----------- | ----------- |
+| Start Debug | F5          |
+| Stop        | Shift + F5  |
+| Step Over   | F10         |
+| Step Into   | F11         |
+| Step Out    | Shift + F11 |

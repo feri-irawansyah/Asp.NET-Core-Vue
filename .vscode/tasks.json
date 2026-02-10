@@ -21,7 +21,7 @@
         {
             "label": "setup:backend",
             "type": "shell",
-            "command": "dotnet restore",
+            "command": "dotnet tool restore",
             "options": {
                 "cwd": "${workspaceFolder}",
                 "shell": {
