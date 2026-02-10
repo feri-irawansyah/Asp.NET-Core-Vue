@@ -45,7 +45,7 @@ Process Run(string name, string command, string cwd)
 }
 
 // FRONTEND
-var frontendCmd = brokerId == "" ? "npm run dev" : $"VITE_MODE={brokerId} npm run dev";
+var frontendCmd = "npm run dev";
 var frontend = Run("VUE", frontendCmd, "src/OnboardingClient");
 
 // BACKEND
